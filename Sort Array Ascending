@@ -1,1 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int n, k, m, temp;
+    printf("Input the size of array : ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Input %d elements in the array :\n", n);
+    for (k = 0; k < n; k++) {
+    printf("element - %d : ", k);
+    scanf("%d", &arr[k]);
+    }
+    for (k = 0; k < n - 1; k++) {
+    for (m = 0; m < n - k - 1; m++) {
+    if (arr[m] > arr[m + 1]) {
+    temp = arr[m];
+    arr[m] = arr[m + 1];
+    arr[m + 1] = temp;
+            }
+        }
+    }
+    printf("Elements of array in sorted ascending order:\n");
+    for (k = 0; k < n; k++) {
+        printf("%d ", arr[k]);
+    }
+    printf("\n");
+
+    return 0;
+}
 

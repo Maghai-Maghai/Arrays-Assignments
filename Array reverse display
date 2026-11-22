@@ -1,1 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+        int a, b;
+
+    printf("Input the number of elements to store in the array :");
+    scanf("%d", &a);
+    int arr[a];
+    printf("Input %d number of elements in the array :\a", a);
+    for (b = 0; b < a; b++) {
+    printf("element - %d : ", b);
+    scanf("%d", &arr[b]);
+    }
+    printf("The values store into the array are : ");
+    for (b = 0; b < a; b++) {
+    printf("%d ", arr[b]);
+    }
+    printf("\nThe values store into the array in reverse are : ");
+    for (b = a - 1; b >= 0; b--) {
+    printf("%d ", arr[b]);
+    }
+    printf("\n");
+
+    return 0;
+}
 

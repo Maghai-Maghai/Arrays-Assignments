@@ -1,1 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+   int n, l, m, count;
+
+    printf("Print all unique elements of an array:\n");
+    printf("-----------------------------------------\n");
+
+    printf("Input the number of elements to be stored in the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    printf("Input %d elements in the array :\n", n);
+    for (l = 0; l < n; l++) {
+        printf("element - %d : ", l);
+        scanf("%d", &arr[l]);
+    }
+
+    printf("\nThe unique elements found in the array are: ");
+    for (l = 0; l < n; l++) {
+        count = 0;
+        for (m = 0; m < n; m++) {
+            if (l != m && arr[l] == arr[m]) {
+                count++;
+                break;
+            }
+        }
+        if (count == 0) {
+            printf("%d ", arr[l]);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
 

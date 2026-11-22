@@ -1,1 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int arr[100], n, m, val, pos;
+    printf("Input the size of array : ");
+    scanf("%d", &n);
+    printf("Input %d elements in the array in ascending order:\n", n);
+    for (m = 0; m < n; m++) {
+        printf("element - %d : ", m);
+        scanf("%d", &arr[m]);
+    }
+    printf("Input the value to be inserted : ");
+    scanf("%d", &val);
+    printf("Input the Position, where the value to be inserted : ");
+    scanf("%d", &pos);
+    printf("The current list of the array :\n");
+    for (m = 0; m < n; m++) {
+        printf("% 5d", arr[m]);
+    }
+    printf("\n");
+    for (m = n; m >= pos; m--) {
+        arr[m] = arr[m - 1];
+    }
+    arr[pos - 1] = val;
+    n++;
+    printf("After Insert the element the new list is :\n");
+    for (m = 0; m < n; m++) {
+        printf("% 5d", arr[m]);
+    }
+    printf("\n");
+
+    return 0;
+}
 

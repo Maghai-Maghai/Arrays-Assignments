@@ -1,1 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define BUFFER_SIZE 5
+int main()
+{   typedef struct {
+    int buffer[BUFFER_SIZE];
+    int head;
+    int count;
+} CircularLogger;
+ void initLogger(CircularLogger *logger) {
+    logger->head = 0;
+    logger->count = 0;
+}
+void insertSample(CircularLogger *logger, int value) {
+    logger->buffer[logger->head] = value;
+    logger->head = (logger->head + 1) % BUFFER_SIZE;
+    if (logger->count < BUFFER_SIZE) {
+        logger->count++;
+    }
+}
+void printSamples(const CircularLogger *logger) {
+    if (logger->count == 0) {
+        printf("Buffer is empty.\n");
+        return;
+    }
+    int start = (logger->count == BUFFER_SIZE) ? logger->head : 0;
+    printf("Chronological samples (oldest -> newest): ");
+    for (int i = 0; i < logger->count; i++) {
+        int index = (start + i) % BUFFER_SIZE;
+        printf("%d ", logger->buffer[index]);
+    }
+    printf("\n");
+}
+void printRawBuffer(const CircularLogger *logger) {
+    printf("Raw buffer state: [ ");
+    for (int i = 0; i < logger->count; i++) {
+        printf("%d ", logger->buffer[i]);
+    }
+    printf("]\n");
+}
+ {
+    CircularLogger logger;
+    initLogger(&logger);
+
+    int input;
+    printf("Circular Data Logger (BUFFER_SIZE = %d)\n", BUFFER_SIZE);
+    printf("Enter sensor values (enter any non-numeric character like 'q' to quit):\n\n");
+{
+        printf("Enter value: ");
+        if (scanf("%d", &input) != 1)
+    insertSample(&logger, input);
+    printRawBuffer(&logger);
+    printSamples(&logger);
+    printf("----------------------------------------\n");
+    }
+
+    printf("\nExiting logger.\n");
+    return 0;}
+
+}
 
